@@ -264,6 +264,11 @@
   color: $color-success;
 }
 
+.tagMuted {
+  background: $color-bg-hover;
+  color: $color-text-tertiary;
+}
+
 .actionRow {
   display: flex;
   gap: $spacing-sm;

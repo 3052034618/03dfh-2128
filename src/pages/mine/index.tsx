@@ -4,7 +4,8 @@ import Taro from '@tarojs/taro';
 import classnames from 'classnames';
 import CountdownCard from '@/components/CountdownCard';
 import { useCarpoolStore } from '@/store/carpoolStore';
-import type { RoleType } from '@/types/carpool';
+import { formatTime, formatCountdown, getCountdownMinutes } from '@/utils/format';
+import type { RoleType, CountdownReminder } from '@/types/carpool';
 import styles from './index.module.scss';
 
 const MinePage: React.FC = () => {
@@ -12,7 +13,13 @@ const MinePage: React.FC = () => {
   const setRole = useCarpoolStore((s) => s.setRole);
   const requests = useCarpoolStore((s) => s.requests);
   const reminders = useCarpoolStore((s) => s.getActiveReminders());
+  const upcomingReminders = useCarpoolStore((s) => s.getUpcomingReminders(30));
   const resetToMock = useCarpoolStore((s) => s.resetToMock);
+
+  const laterReminders = useMemo(() => {
+    const upcomingIds = new Set(upcomingReminders.map((r) => r.id));
+    return reminders.filter((r) => !upcomingIds.has(r.id));
+  }, [reminders, upcomingReminders]);
 
   const stats = useMemo(() => {
     const today = new Date().toDateString();
@@ -143,11 +150,46 @@ const MinePage: React.FC = () => {
             </Text>
             <Text style={{ fontSize: '22rpx', color: '#9099B0' }}>{reminders.length}条</Text>
           </View>
-          <View className={styles.reminderList}>
-            {reminders.map((r) => (
-              <CountdownCard key={r.id} reminder={r} />
-            ))}
-          </View>
+
+          {upcomingReminders.length > 0 && (
+            <View style={{ marginBottom: '16rpx' }}>
+              {upcomingReminders.map((r) => (
+                <CountdownCard key={r.id} reminder={r} />
+              ))}
+            </View>
+          )}
+
+          {laterReminders.length > 0 && (
+            <View>
+              <View
+                style={{
+                  fontSize: '22rpx',
+                  color: '#9099B0',
+                  marginBottom: '12rpx',
+                  paddingLeft: '8rpx'
+                }}
+              >
+                稍后提醒 ({laterReminders.length}) · 散场前30分钟自动弹出确认
+              </View>
+              {laterReminders.map((r) => {
+                const minutes = getCountdownMinutes(r.endTime);
+                return (
+                  <View key={r.id} className={styles.laterReminderItem}>
+                    <View className={styles.laterReminderLeft}>
+                      <Text className={styles.laterReminderRoom}>{r.roomName}</Text>
+                      <Text className={styles.laterReminderDm}>{r.dmName}</Text>
+                    </View>
+                    <View className={styles.laterReminderRight}>
+                      <Text className={styles.laterReminderTime}>{formatTime(r.endTime)}</Text>
+                      <Text className={styles.laterReminderCountdown}>
+                        {formatCountdown(minutes)}后
+                      </Text>
+                    </View>
+                  </View>
+                );
+              })}
+            </View>
+          )}
         </View>
       )}
 
@@ -222,7 +264,7 @@ const MinePage: React.FC = () => {
             <View className={styles.menuIcon}>
               <Text>🗑️</Text>
             </View>
-            <Text className={styles.menuLabel}>清除缓存</Text>
+            <Text className={styles.menuLabel}>重置演示数据</Text>
             <Text className={styles.menuArrow}>›</Text>
           </View>
         </View>

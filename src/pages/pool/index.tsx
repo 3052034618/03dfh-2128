@@ -225,22 +225,37 @@ const PoolPage: React.FC = () => {
               </View>
 
               <View className={styles.tagsRow}>
-                {req.hasLuggage && (
-                  <View className={classnames(styles.tag, styles.tagWarning)}>
+                {req.hasLuggage !== undefined && (
+                  <View
+                    className={classnames(
+                      styles.tag,
+                      req.hasLuggage ? styles.tagWarning : styles.tagMuted
+                    )}
+                  >
                     <Text>🧳</Text>
-                    <Text>有行李</Text>
+                    <Text>{req.hasLuggage ? '有行李' : '无行李'}</Text>
                   </View>
                 )}
-                {req.acceptCarpool && (
-                  <View className={styles.tag}>
+                {req.acceptCarpool !== undefined && (
+                  <View
+                    className={classnames(
+                      styles.tag,
+                      req.acceptCarpool ? '' : styles.tagMuted
+                    )}
+                  >
                     <Text>🚗</Text>
-                    <Text>可拼车</Text>
+                    <Text>{req.acceptCarpool ? '可拼车' : '不拼车'}</Text>
                   </View>
                 )}
-                {req.needFemaleDriver && (
-                  <View className={classnames(styles.tag, styles.tagSuccess)}>
+                {req.needFemaleDriver !== undefined && (
+                  <View
+                    className={classnames(
+                      styles.tag,
+                      req.needFemaleDriver ? styles.tagSuccess : styles.tagMuted
+                    )}
+                  >
                     <Text>👩</Text>
-                    <Text>女司机</Text>
+                    <Text>{req.needFemaleDriver ? '女司机' : '不限司机'}</Text>
                   </View>
                 )}
                 {req.remark && (

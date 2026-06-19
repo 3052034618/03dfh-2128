@@ -159,6 +159,52 @@
   gap: $spacing-sm;
 }
 
+.laterReminderItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-sm $spacing-md;
+  background: $color-bg-hover;
+  border-radius: $radius-md;
+  margin-bottom: $spacing-xs;
+}
+
+.laterReminderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2rpx;
+}
+
+.laterReminderRoom {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.laterReminderDm {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.laterReminderRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2rpx;
+}
+
+.laterReminderTime {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  font-family: 'SF Mono', Menlo, monospace;
+}
+
+.laterReminderCountdown {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
 .guideList {
   display: flex;
   flex-direction: column;
