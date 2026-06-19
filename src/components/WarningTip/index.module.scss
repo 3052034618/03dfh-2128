@@ -1,0 +1,110 @@
+@use '@/styles/variables.scss' as *;
+
+.tipBox {
+  background: $color-bg-warning;
+  border-radius: $radius-lg;
+  padding: $spacing-md $spacing-lg;
+  border: 2rpx solid rgba($color-warning, 0.2);
+}
+
+.tipHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.tipIcon {
+  font-size: 32rpx;
+}
+
+.tipTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-warning;
+}
+
+.tipCount {
+  margin-left: auto;
+  padding: $spacing-xs $spacing-md;
+  background: rgba($color-warning, 0.15);
+  border-radius: $radius-round;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: $color-warning;
+}
+
+.tipList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.tipItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: $radius-md;
+}
+
+.levelBadge {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  padding: 4rpx 12rpx;
+  border-radius: $radius-xs;
+}
+
+.levelRequired {
+  background: rgba($color-error, 0.12);
+  color: $color-error;
+}
+
+.levelRecommended {
+  background: rgba($color-warning, 0.15);
+  color: $color-warning;
+}
+
+.tipLabel {
+  flex: 1;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.tipAction {
+  padding: $spacing-xs $spacing-md;
+  background: $color-warning;
+  color: $color-text-white;
+  border-radius: $radius-round;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.97);
+  }
+}
+
+.successBox {
+  background: rgba($color-success, 0.08);
+  border-color: rgba($color-success, 0.2);
+  border-radius: $radius-lg;
+  padding: $spacing-md $spacing-lg;
+  border: 2rpx solid rgba($color-success, 0.2);
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.successIcon {
+  font-size: 32rpx;
+}
+
+.successText {
+  flex: 1;
+  font-size: $font-size-sm;
+  color: $color-success;
+  font-weight: $font-weight-medium;
+}

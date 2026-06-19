@@ -1,0 +1,157 @@
+@use '@/styles/variables.scss' as *;
+
+.field {
+  margin-bottom: $spacing-lg;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.labelText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.required {
+  color: $color-error;
+  font-size: $font-size-sm;
+}
+
+.hint {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.valueBox {
+  min-height: 88rpx;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: 0 $spacing-lg;
+  display: flex;
+  align-items: center;
+  border: 2rpx solid $color-border;
+  transition: all $transition-base;
+
+  &:active {
+    border-color: $color-primary-light;
+    background: $color-bg-hover;
+  }
+}
+
+.active {
+  border-color: $color-primary;
+  box-shadow: 0 0 0 4rpx rgba(45, 91, 255, 0.08);
+}
+
+.placeholder {
+  color: $color-text-tertiary;
+  font-size: $font-size-md;
+}
+
+.value {
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+}
+
+.arrow {
+  margin-left: auto;
+  color: $color-text-tertiary;
+  font-size: $font-size-lg;
+}
+
+.optionsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+}
+
+.optionItem {
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-button;
+  background: $color-bg-card;
+  border: 2rpx solid $color-border;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  transition: all $transition-base;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.optionActive {
+  background: $color-primary;
+  border-color: $color-primary;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.numberBtn {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-md;
+  background: $color-bg-hover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  color: $color-text-secondary;
+  transition: all $transition-base;
+
+  &:active {
+    background: $color-primary;
+    color: $color-text-white;
+  }
+}
+
+.numberValue {
+  min-width: 120rpx;
+  text-align: center;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.numberUnit {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-left: $spacing-xs;
+}
+
+.inputField {
+  flex: 1;
+  height: 88rpx;
+  padding: 0 $spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  border: 2rpx solid $color-border;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.textareaField {
+  width: 100%;
+  min-height: 160rpx;
+  padding: $spacing-md $spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  border: 2rpx solid $color-border;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  box-sizing: border-box;
+}

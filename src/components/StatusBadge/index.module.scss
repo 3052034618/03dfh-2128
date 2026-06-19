@@ -1,0 +1,63 @@
+@use '@/styles/variables.scss' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs $spacing-md;
+  border-radius: $radius-button;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+}
+
+.pending {
+  background: rgba($color-warning, 0.1);
+  color: $color-warning;
+}
+
+.published {
+  background: rgba($color-primary, 0.1);
+  color: $color-primary;
+}
+
+.completed {
+  background: rgba($color-success, 0.1);
+  color: $color-success;
+}
+
+.cancelled {
+  background: rgba($color-text-tertiary, 0.15);
+  color: $color-text-tertiary;
+}
+
+.draft {
+  background: rgba($color-text-tertiary, 0.1);
+  color: $color-text-tertiary;
+}
+
+.dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: $radius-round;
+}
+
+.dotPending {
+  background: $color-warning;
+}
+
+.dotPublished {
+  background: $color-primary;
+}
+
+.dotCompleted {
+  background: $color-success;
+}
+
+.dotCancelled {
+  background: $color-text-tertiary;
+}
+
+.dotDraft {
+  background: $color-text-tertiary;
+}

@@ -1,0 +1,270 @@
+@use '@/styles/variables.scss' as *;
+
+.pageContainer {
+  min-height: 100vh;
+  padding: $page-padding;
+  padding-bottom: calc(180rpx + env(safe-area-inset-bottom));
+  background: $color-bg-page;
+}
+
+.headerGreeting {
+  margin-bottom: $spacing-lg;
+}
+
+.greetingTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xs;
+}
+
+.greetingSub {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.section {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.sectionTitleIcon {
+  font-size: 32rpx;
+}
+
+.sectionHint {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.destGroup {
+  margin-bottom: $spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.destGroupTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.destGroupEmoji {
+  font-size: 26rpx;
+}
+
+.destOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.destOption {
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  background: $color-bg-hover;
+  border: 2rpx solid transparent;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  transition: all $transition-base;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4rpx;
+  max-width: 48%;
+}
+
+.destOptionActive {
+  background: rgba($color-primary, 0.08);
+  border-color: $color-primary;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+.destName {
+  @include text-ellipsis;
+}
+
+.destAddr {
+  font-size: $font-size-xs;
+  opacity: 0.7;
+  @include text-ellipsis;
+}
+
+.timeOptions {
+  display: flex;
+  gap: $spacing-sm;
+  overflow-x: auto;
+  padding-bottom: $spacing-xs;
+  @include scroll-x-container;
+}
+
+.timeItem {
+  @include scroll-x-item(160rpx);
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  background: $color-bg-hover;
+  border: 2rpx solid transparent;
+  text-align: center;
+  transition: all $transition-base;
+}
+
+.timeItemActive {
+  background: rgba($color-primary, 0.08);
+  border-color: $color-primary;
+}
+
+.timeHour {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.timeItemActive .timeHour {
+  color: $color-primary;
+}
+
+.timeLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+}
+
+.yesNoRow {
+  display: flex;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.yesNoLabel {
+  width: 200rpx;
+  flex-shrink: 0;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.yesNoBtns {
+  flex: 1;
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.yesNoBtn {
+  flex: 1;
+  height: 72rpx;
+  border-radius: $radius-md;
+  background: $color-bg-hover;
+  border: 2rpx solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  transition: all $transition-base;
+}
+
+.yesNoBtnActive {
+  background: $color-primary;
+  border-color: $color-primary;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.yesNoBtnActiveNo {
+  background: rgba($color-text-tertiary, 0.2);
+  border-color: transparent;
+  color: $color-text-secondary;
+}
+
+.summaryCard {
+  background: linear-gradient(135deg, rgba($color-primary, 0.06) 0%, rgba($color-primary-light, 0.03) 100%);
+  border: 2rpx solid rgba($color-primary, 0.15);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+.summaryTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  margin-bottom: $spacing-md;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.summaryText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: 1.8;
+  word-break: break-all;
+}
+
+.bottomBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $spacing-md $page-padding;
+  padding-bottom: calc($spacing-md + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10rpx);
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.06);
+  display: flex;
+  gap: $spacing-md;
+}
+
+.submitBtn {
+  flex: 1;
+  height: $button-height-lg;
+  border-radius: $radius-button;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  @include button-reset;
+  transition: all $transition-base;
+  box-shadow: 0 4rpx 20rpx rgba(45, 91, 255, 0.3);
+
+  &:active {
+    opacity: 0.92;
+    transform: scale(0.98);
+  }
+}
+
+.submitBtnDisabled {
+  background: $color-text-disabled;
+  box-shadow: none;
+}

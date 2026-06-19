@@ -1,0 +1,56 @@
+@use '@/styles/variables.scss' as *;
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-button;
+  background: $color-bg-card;
+  border: 2rpx solid $color-border;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  transition: all $transition-base;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tagActive {
+  background: $color-primary;
+  border-color: $color-primary;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.tagWarning {
+  background: $color-bg-warning;
+  border-color: rgba($color-warning, 0.3);
+  color: $color-warning;
+
+  &.tagActive {
+    background: $color-warning;
+    border-color: $color-warning;
+    color: $color-text-white;
+  }
+}
+
+.tagSuccess {
+  background: rgba($color-success, 0.08);
+  border-color: rgba($color-success, 0.3);
+  color: $color-success;
+
+  &.tagActive {
+    background: $color-success;
+    border-color: $color-success;
+    color: $color-text-white;
+  }
+}
+
+.tagSmall {
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-size-xs;
+}
+
+.checkIcon {
+  font-size: $font-size-sm;
+}
