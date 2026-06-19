@@ -12,6 +12,7 @@ const MinePage: React.FC = () => {
   const setRole = useCarpoolStore((s) => s.setRole);
   const requests = useCarpoolStore((s) => s.requests);
   const reminders = useCarpoolStore((s) => s.getActiveReminders());
+  const resetToMock = useCarpoolStore((s) => s.resetToMock);
 
   const stats = useMemo(() => {
     const today = new Date().toDateString();
@@ -45,12 +46,12 @@ const MinePage: React.FC = () => {
         }),
       clear: () => {
         Taro.showModal({
-          title: '清除缓存',
-          content: '确定清除本地缓存数据？',
+          title: '重置演示数据',
+          content: '确定重置为初始演示数据吗？',
           success: (res) => {
             if (res.confirm) {
-              Taro.clearStorageSync();
-              Taro.showToast({ title: '已清除', icon: 'success' });
+              resetToMock();
+              Taro.showToast({ title: '已重置', icon: 'success' });
             }
           }
         });

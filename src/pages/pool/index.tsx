@@ -9,7 +9,8 @@ import {
   getDestinationLabel,
   getDestinationEmoji,
   getCountdownMinutes,
-  formatCountdown
+  formatCountdown,
+  generateCarpoolSummary
 } from '@/utils/format';
 import type { CarpoolRequest, CarpoolStatus } from '@/types/carpool';
 import styles from './index.module.scss';
@@ -67,11 +68,7 @@ const PoolPage: React.FC = () => {
   };
 
   const handleCopySummary = (req: CarpoolRequest) => {
-    const summary = `【${req.roomName}】${req.playerCount}人 ${formatTime(req.estimatedEndTime)}散场
-目的地：${req.destinationName}
-预算：¥${req.budget}
-电话：${req.contactPhone}
-${req.remark ? `备注：${req.remark}` : ''}`;
+    const summary = generateCarpoolSummary(req, true);
     Taro.setClipboardData({
       data: summary,
       success: () => Taro.showToast({ title: '已复制', icon: 'success' })

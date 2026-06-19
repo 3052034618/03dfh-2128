@@ -57,16 +57,32 @@ export const getStatusLabel = (status: CarpoolStatus): string => {
   return map[status];
 };
 
-export const generateCarpoolSummary = (req: CarpoolRequest): string => {
+export const generateCarpoolSummary = (req: Partial<CarpoolRequest>, includeNegatives = false): string => {
   const parts: string[] = [];
-  parts.push(`【${req.roomName}】${req.dmName}带${req.playerCount}人`);
-  parts.push(`${formatTime(req.estimatedEndTime)}散场`);
-  parts.push(`前往${getDestinationEmoji(req.destinationType)}${req.destinationName}`);
+  parts.push(`【${req.roomName || '未选房间'}】${req.dmName || '未选DM'}带${req.playerCount || 0}人`);
+  if (req.estimatedEndTime) {
+    parts.push(`${formatTime(req.estimatedEndTime)}散场`);
+  }
+  if (req.destinationName && req.destinationType) {
+    parts.push(`前往${getDestinationEmoji(req.destinationType)}${req.destinationName}`);
+  }
 
   const tags: string[] = [];
-  if (req.hasLuggage) tags.push('有行李');
-  if (req.acceptCarpool) tags.push('可拼车');
-  if (req.needFemaleDriver) tags.push('需女司机');
+  if (includeNegatives) {
+    if (req.hasLuggage !== undefined) {
+      tags.push(req.hasLuggage ? '有行李' : '无行李');
+    }
+    if (req.acceptCarpool !== undefined) {
+      tags.push(req.acceptCarpool ? '可拼车' : '不拼车');
+    }
+    if (req.needFemaleDriver !== undefined) {
+      tags.push(req.needFemaleDriver ? '需女司机' : '不限司机');
+    }
+  } else {
+    if (req.hasLuggage) tags.push('有行李');
+    if (req.acceptCarpool) tags.push('可拼车');
+    if (req.needFemaleDriver) tags.push('需女司机');
+  }
   if (tags.length > 0) parts.push(`(${tags.join('、')})`);
 
   if (req.budget) parts.push(`预算¥${req.budget}`);

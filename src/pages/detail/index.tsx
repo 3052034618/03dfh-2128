@@ -52,7 +52,7 @@ const DetailPage: React.FC = () => {
         状态：{StatusBadge ? '' : ''}
         {request.status}
         {'\n\n'}
-        📋 {generateCarpoolSummary(request)}
+        📋 {generateCarpoolSummary(request, true)}
         {'\n\n'}
         提交时间：{formatDate(request.createdAt)}
         {'\n'}

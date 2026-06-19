@@ -31,7 +31,7 @@ const SendoffPage: React.FC = () => {
   const rooms = useCarpoolStore((s) => s.rooms);
   const dms = useCarpoolStore((s) => s.dms);
   const destinations = useCarpoolStore((s) => s.destinations);
-  const reminders = useCarpoolStore((s) => s.getActiveReminders());
+  const upcomingReminders = useCarpoolStore((s) => s.getUpcomingReminders(30));
   const addRequest = useCarpoolStore((s) => s.addRequest);
 
   const [roomId, setRoomId] = useState<string>('');
@@ -186,9 +186,9 @@ const SendoffPage: React.FC = () => {
         <Text className={styles.greetingSub}>快速登记今晚送客用车需求</Text>
       </View>
 
-      {reminders.length > 0 && (
+      {upcomingReminders.length > 0 && (
         <View style={{ marginBottom: '16rpx' }}>
-          {reminders.slice(0, 2).map((r) => (
+          {upcomingReminders.slice(0, 2).map((r) => (
             <CountdownCard key={r.id} reminder={r} />
           ))}
         </View>

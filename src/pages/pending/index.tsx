@@ -334,7 +334,7 @@ const PendingPage: React.FC = () => {
                 lineHeight: 1.6
               }}
             >
-              📋 {generateCarpoolSummary(req)}
+              📋 {generateCarpoolSummary(req, true)}
             </View>
 
             <View className={styles.actionRow}>
